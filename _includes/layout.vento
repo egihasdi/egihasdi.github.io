@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
     <link rel="stylesheet" href="/styles.css"/>
     <link rel="stylesheet" href="/css/code_theme.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       code.hljs {
         background: transparent;
@@ -12,8 +13,8 @@
   <title>My first page</title>
 </head>
 <body class="bg-base">
-    <div class="container mx-auto py-4">
-      <div class="mb-8 bg-gradient-to-r from-base via-mantle to-base px-3 py-2 rounded-sm">
+    <div class="container mx-auto p-4">
+      <div class="mb-8 bg-gradient-to-r from-base via-mantle to-base py-2 rounded-sm">
         <div class="flex flex-row justify-between">
           <div>
             <a href="/" >
@@ -23,14 +24,14 @@
             </a>
           </div>
           <div class="flex flex-row gap-6">
-            <a href="/" class="text-flamingo hover:text-rosewater">Blog</a>
-            <a href="/" class="text-pink hover:text-rosewater">TILs</a>
-            <a href="/" class="text-maroon hover:text-rosewater">About</a>
+            <a href="/" class="text-flamingo hover:text-pink">Blog</a>
+            <a href="/" class="text-pink hover:text-maroon">TILs</a>
+            <a href="/" class="text-maroon hover:text-flamamingo">About</a>
           </div>
         </div>
       </div>
 
-      <div class="mx-auto my-12 prose prose-invert ">
+      <div class="mx-auto my-10 prose prose-invert ">
         {{ content }}
       </div>
 
