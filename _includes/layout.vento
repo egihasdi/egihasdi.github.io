@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles.css">
+  <title>My first page</title>
+</head>
+<body class="bg-base">
+    <div class="container mx-auto py-8">
+      <div class="mb-8">
+        <h1 class="text-rosewater">EgiHasdi's Dev Journal</h1>
+      </div>
+
+      <div class="mx-auto my-8 prose prose-invert">
+        {{ content }}
+      </div>
+
+    </div>
+</body>
+</html>

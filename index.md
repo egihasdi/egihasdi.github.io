@@ -1,4 +1,5 @@
 ---
+layout: layout.vento
 title: This is a post with mastodon comments
 date: "2018-08-23"
 author: Óscar Otero
