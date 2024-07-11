@@ -5,19 +5,32 @@
     <link rel="stylesheet" href="/styles.css"/>
     <link rel="stylesheet" href="/css/code_theme.css"/>
     <style>
-      .hljs {
+      code.hljs {
         background: transparent;
       }
     </style>
   <title>My first page</title>
 </head>
 <body class="bg-base">
-    <div class="container mx-auto py-8">
-      <div class="mb-8">
-        <h1 class="text-rosewater">EgiHasdi's Dev Journal</h1>
+    <div class="container mx-auto py-4">
+      <div class="mb-8 bg-gradient-to-r from-base via-mantle to-base px-3 py-2 rounded-sm">
+        <div class="flex flex-row justify-between">
+          <div>
+            <a href="/" >
+              <h1 class="text-rosewater font-medium text-md">
+                EgiHasdi's  Dev Journal
+              </h1>
+            </a>
+          </div>
+          <div class="flex flex-row gap-6">
+            <a href="/" class="text-flamingo hover:text-rosewater">Blog</a>
+            <a href="/" class="text-pink hover:text-rosewater">TILs</a>
+            <a href="/" class="text-maroon hover:text-rosewater">About</a>
+          </div>
+        </div>
       </div>
 
-      <div class="mx-auto my-8 prose prose-invert ">
+      <div class="mx-auto my-12 prose prose-invert ">
         {{ content }}
       </div>
 
