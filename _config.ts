@@ -8,6 +8,7 @@ import lang_js from "npm:highlight.js/lib/languages/javascript";
 import { full as emoji } from "npm:markdown-it-emoji";
 import { ObsidianLink } from "./lib/obsidian/index.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
+import pagefind from "lume/plugins/pagefind.ts";
 
 const site = lume();
 
@@ -56,6 +57,8 @@ site.use(
     },
   }),
 );
+
+site.use(pagefind());
 
 site.use(postcss());
 
