@@ -5,8 +5,16 @@ import catppuccin from "npm:@catppuccin/tailwindcss";
 import typography from "npm:@tailwindcss/typography";
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import lang_js from "npm:highlight.js/lib/languages/javascript";
+import { full as emoji } from "npm:markdown-it-emoji";
+import { ObsidianLink } from "./lib/obsidian/index.ts";
+import modifyUrls from "lume/plugins/modify_urls.ts";
 
 const site = lume();
+
+site.hooks.addMarkdownItPlugin(emoji);
+site.hooks.addMarkdownItPlugin(ObsidianLink, {
+  baseUrl: "/notes/",
+});
 
 site.use(
   tailwindcss({
@@ -28,6 +36,18 @@ site.remoteFile(
 );
 
 site.copy("/css/code_theme.css"); // Cop
+site.copy("/notes/assets/imgs", "assets/imgs");
+
+site.use(
+  modifyUrls({
+    fn(url) {
+      if (url.startsWith("assets/imgs")) {
+        return "/" + url;
+      }
+      return url;
+    },
+  }),
+);
 
 site.use(
   codeHighlight({
@@ -36,7 +56,6 @@ site.use(
     },
   }),
 );
-
 
 site.use(postcss());
 
