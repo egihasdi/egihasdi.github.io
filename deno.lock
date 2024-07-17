@@ -48,6 +48,7 @@
       "npm:markdown-it-attrs@4.1.6": "npm:markdown-it-attrs@4.1.6_markdown-it@14.1.0",
       "npm:markdown-it-deflist@3.0.0": "npm:markdown-it-deflist@3.0.0",
       "npm:markdown-it-emoji": "npm:markdown-it-emoji@3.0.0",
+      "npm:markdown-it-footnote": "npm:markdown-it-footnote@4.0.0",
       "npm:markdown-it-obsidian": "npm:markdown-it-obsidian@1.1.0",
       "npm:markdown-it-regexp": "npm:markdown-it-regexp@0.4.0",
       "npm:markdown-it@14.1.0": "npm:markdown-it@14.1.0",
@@ -651,6 +652,10 @@
       },
       "markdown-it-emoji@3.0.0": {
         "integrity": "sha512-+rUD93bXHubA4arpEZO3q80so0qgoFJEKRkRbjKX8RTdca89v2kfyF+xR3i2sQTwql9tpPZPOQN5B+PunspXRg==",
+        "dependencies": {}
+      },
+      "markdown-it-footnote@4.0.0": {
+        "integrity": "sha512-WYJ7urf+khJYl3DqofQpYfEYkZKbmXmwxQV8c8mO/hGIhgZ1wOe7R4HLFNwqx7TjILbnC98fuyeSsin19JdFcQ==",
         "dependencies": {}
       },
       "markdown-it-obsidian@1.1.0": {

@@ -9,13 +9,21 @@ import { full as emoji } from "npm:markdown-it-emoji";
 import { ObsidianLink } from "./lib/obsidian/index.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
 import pagefind from "lume/plugins/pagefind.ts";
+import footnote from "npm:markdown-it-footnote";
 
-const site = lume();
+const site = lume({}, {
+  markdown: {
+    options: {
+      linkify: true,
+    }
+  }
+});
 
 site.hooks.addMarkdownItPlugin(emoji);
 site.hooks.addMarkdownItPlugin(ObsidianLink, {
   baseUrl: "/notes/",
 });
+site.hooks.addMarkdownItPlugin(footnote);
 
 site.use(
   tailwindcss({
