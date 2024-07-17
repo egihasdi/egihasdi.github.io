@@ -10,6 +10,7 @@ import { ObsidianLink } from "./lib/obsidian/index.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import footnote from "npm:markdown-it-footnote";
+import externalLinks from 'npm:markdown-it-external-links';
 
 const site = lume({}, {
   markdown: {
@@ -24,6 +25,12 @@ site.hooks.addMarkdownItPlugin(ObsidianLink, {
   baseUrl: "/notes/",
 });
 site.hooks.addMarkdownItPlugin(footnote);
+site.hooks.addMarkdownItPlugin(externalLinks, {
+  internalDomains: [
+    "egihasdi.github.io"
+  ],
+  externalTarget: '_blank'
+});
 
 site.use(
   tailwindcss({
