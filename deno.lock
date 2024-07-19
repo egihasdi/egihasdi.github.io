@@ -38,10 +38,12 @@
       "jsr:@std/yaml@^1.0.0-rc.1": "jsr:@std/yaml@1.0.0-rc.2",
       "npm:@catppuccin/tailwindcss": "npm:@catppuccin/tailwindcss@0.1.6_tailwindcss@3.4.4__postcss@8.4.39",
       "npm:@js-temporal/polyfill@0.4.4": "npm:@js-temporal/polyfill@0.4.4",
+      "npm:@kwvanderlinde/markdown-it-wikilinks": "npm:@kwvanderlinde/markdown-it-wikilinks@1.0.2",
       "npm:@mdit/plugin-figure": "npm:@mdit/plugin-figure@0.12.0_markdown-it@14.1.0",
       "npm:@tailwindcss/typography": "npm:@tailwindcss/typography@0.5.13_tailwindcss@3.4.4__postcss@8.4.39",
       "npm:autoprefixer@10.4.19": "npm:autoprefixer@10.4.19_postcss@8.4.39",
       "npm:estree-walker@3.0.3": "npm:estree-walker@3.0.3",
+      "npm:extend": "npm:extend@3.0.2",
       "npm:highlight.js": "npm:highlight.js@11.10.0",
       "npm:highlight.js@11.9.0": "npm:highlight.js@11.9.0",
       "npm:markdown-it": "npm:markdown-it@14.1.0",
@@ -57,6 +59,8 @@
       "npm:pagefind@1.1.0": "npm:pagefind@1.1.0",
       "npm:postcss-import@16.1.0": "npm:postcss-import@16.1.0_postcss@8.4.39",
       "npm:postcss@8.4.39": "npm:postcss@8.4.39",
+      "npm:reurl": "npm:reurl@1.0.0-rc.2",
+      "npm:sanitize-filename": "npm:sanitize-filename@1.6.3",
       "npm:tailwindcss@3.4.4": "npm:tailwindcss@3.4.4_postcss@8.4.39",
       "npm:unidecode@1.1.0": "npm:unidecode@1.1.0"
     },
@@ -233,6 +237,14 @@
         "dependencies": {
           "jsbi": "jsbi@4.3.0",
           "tslib": "tslib@2.6.3"
+        }
+      },
+      "@kwvanderlinde/markdown-it-wikilinks@1.0.2": {
+        "integrity": "sha512-IHXtM4RSaJAPgcFxwzfg+4VL7Cs3G73ocjioj+kc5NWqYeYPuWS394X2D86p/BBAfH4+VYvVD5PvvFvEtVCW7A==",
+        "dependencies": {
+          "extend": "extend@3.0.2",
+          "markdown-it-regexp": "markdown-it-regexp@0.4.0",
+          "sanitize-filename": "sanitize-filename@1.6.3"
         }
       },
       "@mdit/plugin-figure@0.12.0_markdown-it@14.1.0": {
@@ -862,6 +874,10 @@
         "integrity": "sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==",
         "dependencies": {}
       },
+      "punycode@2.3.1": {
+        "integrity": "sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==",
+        "dependencies": {}
+      },
       "queue-microtask@1.2.3": {
         "integrity": "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==",
         "dependencies": {}
@@ -884,6 +900,12 @@
           "is-core-module": "is-core-module@2.14.0",
           "path-parse": "path-parse@1.0.7",
           "supports-preserve-symlinks-flag": "supports-preserve-symlinks-flag@1.0.0"
+        }
+      },
+      "reurl@1.0.0-rc.2": {
+        "integrity": "sha512-5RLNZwTDo+5ypeXiU3rTdfAGl3Rc1jAF87UHIyzP9hJyWvPfqxgppRginm11JEd24YsmnySQyJZcdPSBlY0Rzg==",
+        "dependencies": {
+          "spec-url": "spec-url@2.0.0-dev.1"
         }
       },
       "reusify@1.0.4": {
@@ -919,6 +941,12 @@
       "source-map-js@1.2.0": {
         "integrity": "sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==",
         "dependencies": {}
+      },
+      "spec-url@2.0.0-dev.1": {
+        "integrity": "sha512-NKE2wT6tsvYa4xfVFcnjxSDFJwDOwU1NU2NhfnxFksutZrOShZ2p7pgQWS98Evq0cHMGBBjGQlbwrcAHLDywfw==",
+        "dependencies": {
+          "punycode": "punycode@2.3.1"
+        }
       },
       "string-width@4.2.3": {
         "integrity": "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==",

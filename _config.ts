@@ -9,7 +9,7 @@ import { full as emoji } from "npm:markdown-it-emoji";
 import { ObsidianLink } from "./lib/obsidian/index.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
 import pagefind from "lume/plugins/pagefind.ts";
-import footnote from "./lib/markdown-it-footnote/index.cjs.js";
+import footnote from "npm:markdown-it-footnote";
 import externalLinks from 'npm:markdown-it-external-links';
 
 const site = lume({}, {

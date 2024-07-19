@@ -1,65 +1,153 @@
 export function ObsidianLink(md, options = {}) {
-  const wikiLinkRegex = /\[\[([^\|\]]+)(?:\|([^\]]+))?\]\]/g;
-  const baseUrl = options.baseUrl || "";
+  const baseUrl = options.baseUrl || ''
+  // Insert each marker as a separate text token, and add it to delimiter list
+  //
+  function tokenize(state, silent) {
+    const start = state.pos
+    const marker = state.src.charCodeAt(start)
 
-  md.inline.ruler.before("link", "obsidian_link", function (state, silent) {
-    const originalPos = state.pos;
-    const src = state.src;
-    let match;
-    let matches = [];
+    if (silent) { return false }
 
-    // Find all matches first
-    while ((match = wikiLinkRegex.exec(src)) !== null) {
-      matches.push({
-        match: match,
-        index: match.index,
-        length: match[0].length,
-      });
-    }
+    if (marker !== 0x3D/* = */ && marker !== 0x5B/* [ */) { return false }
 
-    if (matches.length === 0) {
-      return false;
-    }
+    // Handle == for mark
+    if (marker === 0x3D) {
+      const scanned = state.scanDelims(state.pos, true)
+      let len = scanned.length
+      const ch = String.fromCharCode(marker)
 
-    let lastPos = originalPos;
+      if (len < 2) { return false }
 
-    matches.forEach((item) => {
-      if (!silent) {
-        // Process any text before the match as a text token
-        if (item.index > lastPos) {
-          const textToken = state.push("text", "", 0);
-          textToken.content = src.slice(lastPos, item.index);
-        }
-
-        // Create tokens for the link
-        const token = state.push("link_open", "a", 1);
-        token.attrs = [["href", baseUrl + item.match[1]]];
-
-        const textToken = state.push("text", "", 0);
-        textToken.content = item.match[2] || item.match[1];
-
-        state.push("link_close", "a", -1);
-
-        lastPos = item.index + item.length;
+      if (len % 2) {
+        const token = state.push('text', '', 0)
+        token.content = ch
+        len--
       }
-    });
 
-    if (!silent && lastPos < src.length) {
-      // Process any remaining text after the last match
-      const textToken = state.push("text", "", 0);
-      textToken.content = src.slice(lastPos);
+      for (let i = 0; i < len; i += 2) {
+        const token = state.push('text', '', 0)
+        token.content = ch + ch
+
+        if (!scanned.can_open && !scanned.can_close) { continue }
+
+        state.delimiters.push({
+          marker,
+          length: 0,     // disable "rule of 3" length checks meant for emphasis
+          jump: i / 2, // 1 delimiter = 2 characters
+          token: state.tokens.length - 1,
+          end: -1,
+          open: scanned.can_open,
+          close: scanned.can_close
+        })
+      }
+
+      state.pos += scanned.length
+      return true
     }
 
-    state.pos = src.length;
-    return true;
-  });
+    // Handle [[ for wikilink
+    if (marker === 0x5B && state.src.charCodeAt(start + 1) === 0x5B) {
+      const end = state.src.indexOf(']]', start)
 
-  md.renderer.rules.obsidian_link_open = function (tokens, idx) {
-    const href = tokens[idx].attrs[0][1];
-    return `<a class="obsidian-link" href="${href}">`;
-  };
+      if (end === -1) { return false }
 
-  md.renderer.rules.obsidian_link_close = function (tokens, idx) {
-    return "</a>";
-  };
-}
+      const content = state.src.slice(start + 2, end)
+      const [href, text] = content.split('|')
+      const token = state.push('wikilink', '', 0)
+      token.content = content
+      token.href = baseUrl + href
+      token.text = text || href
+
+      state.pos = end + 2
+      return true
+    }
+
+    return false
+  }
+
+  // Walk through delimiter list and replace text tokens with tags
+  //
+  function postProcess(state, delimiters) {
+    const loneMarkers = []
+    const max = delimiters.length
+
+    for (let i = 0; i < max; i++) {
+      const startDelim = delimiters[i]
+
+      if (startDelim.marker !== 0x3D/* = */) {
+        continue
+      }
+
+      if (startDelim.end === -1) {
+        continue
+      }
+
+      const endDelim = delimiters[startDelim.end]
+
+      const token_o = state.tokens[startDelim.token]
+      token_o.type = 'mark_open'
+      token_o.tag = 'mark'
+      token_o.nesting = 1
+      token_o.markup = '=='
+      token_o.content = ''
+
+      const token_c = state.tokens[endDelim.token]
+      token_c.type = 'mark_close'
+      token_c.tag = 'mark'
+      token_c.nesting = -1
+      token_c.markup = '=='
+      token_c.content = ''
+
+      if (state.tokens[endDelim.token - 1].type === 'text' &&
+        state.tokens[endDelim.token - 1].content === '=') {
+        loneMarkers.push(endDelim.token - 1)
+      }
+    }
+
+    // If a marker sequence has an odd number of characters, it's split
+    // like this: `~~~~~` -> `~` + `~~` + `~~`, leaving one marker at the
+    // start of the sequence.
+    //
+    // So, we have to move all those markers after subsequent s_close tags.
+    //
+    while (loneMarkers.length) {
+      const i = loneMarkers.pop()
+      let j = i + 1
+
+      while (j < state.tokens.length && state.tokens[j].type === 'mark_close') {
+        j++
+      }
+
+      j--
+
+      if (i !== j) {
+        const token = state.tokens[j]
+        state.tokens[j] = state.tokens[i]
+        state.tokens[i] = token
+      }
+    }
+  }
+
+  md.inline.ruler.before('emphasis', 'mark', tokenize)
+  md.inline.ruler.before('emphasis', 'wikilink', tokenize)
+  md.inline.ruler2.before('emphasis', 'mark', function (state) {
+    let curr
+    const tokens_meta = state.tokens_meta
+    const max = (state.tokens_meta || []).length
+
+    postProcess(state, state.delimiters)
+
+    for (curr = 0; curr < max; curr++) {
+      if (tokens_meta[curr] && tokens_meta[curr].delimiters) {
+        postProcess(state, tokens_meta[curr].delimiters)
+      }
+    }
+  })
+
+  md.renderer.rules.wikilink = function (tokens, idx) {
+    const token = tokens[idx]
+    const href = md.utils.escapeHtml(token.href)
+    const text = md.utils.escapeHtml(token.text)
+    return `<a href="${href}">${text}</a>`
+  }
+};
