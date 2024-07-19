@@ -1,5 +1,6 @@
+import { titleToUrl } from "./titleToUrl.ts"
+
 export function ObsidianLink(md, options = {}) {
-  const baseUrl = options.baseUrl || ''
   // Insert each marker as a separate text token, and add it to delimiter list
   //
   function tokenize(state, silent) {
@@ -55,7 +56,7 @@ export function ObsidianLink(md, options = {}) {
       const [href, text] = content.split('|')
       const token = state.push('wikilink', '', 0)
       token.content = content
-      token.href = baseUrl + href
+      token.href = titleToUrl(href, 'notes')
       token.text = text || href
 
       state.pos = end + 2

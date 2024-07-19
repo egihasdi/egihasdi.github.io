@@ -11,6 +11,8 @@ import modifyUrls from "lume/plugins/modify_urls.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import footnote from "npm:markdown-it-footnote";
 import externalLinks from 'npm:markdown-it-external-links';
+import slugifyUrls from "lume/plugins/slugify_urls.ts";
+import minifyHTML from "lume/plugins/minify_html.ts";
 
 const site = lume({}, {
   markdown: {
@@ -31,6 +33,9 @@ site.hooks.addMarkdownItPlugin(externalLinks, {
   ],
   externalTarget: '_blank'
 });
+
+site.use(slugifyUrls());
+site.use(minifyHTML());
 
 site.use(
   tailwindcss({
@@ -60,6 +65,7 @@ site.use(
       if (url.startsWith("assets/imgs")) {
         return "/" + url;
       }
+
       return url;
     },
   }),
