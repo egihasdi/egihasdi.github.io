@@ -40,6 +40,8 @@
       "jsr:@std/yaml@0.224.3": "jsr:@std/yaml@0.224.3",
       "jsr:@std/yaml@^1.0.0-rc.1": "jsr:@std/yaml@1.0.0-rc.2",
       "npm:@catppuccin/tailwindcss": "npm:@catppuccin/tailwindcss@0.1.6_tailwindcss@3.4.4__postcss@8.4.39",
+      "npm:@egihasdi/markdown-it-footnote": "npm:@egihasdi/markdown-it-footnote@4.0.0",
+      "npm:@egihasdi/markdown-it-footnote@4.0.1": "npm:@egihasdi/markdown-it-footnote@4.0.1",
       "npm:@js-temporal/polyfill@0.4.4": "npm:@js-temporal/polyfill@0.4.4",
       "npm:@kwvanderlinde/markdown-it-wikilinks": "npm:@kwvanderlinde/markdown-it-wikilinks@1.0.2",
       "npm:@mdit/plugin-figure": "npm:@mdit/plugin-figure@0.12.0_markdown-it@14.1.0",
@@ -49,6 +51,7 @@
       "npm:extend": "npm:extend@3.0.2",
       "npm:highlight.js": "npm:highlight.js@11.10.0",
       "npm:highlight.js@11.9.0": "npm:highlight.js@11.9.0",
+      "npm:home": "npm:home@2.0.0",
       "npm:markdown-it": "npm:markdown-it@14.1.0",
       "npm:markdown-it-attrs@4.1.6": "npm:markdown-it-attrs@4.1.6_markdown-it@14.1.0",
       "npm:markdown-it-deflist@3.0.0": "npm:markdown-it-deflist@3.0.0",
@@ -196,6 +199,14 @@
         "dependencies": {
           "tailwindcss": "tailwindcss@3.4.4_postcss@8.4.39"
         }
+      },
+      "@egihasdi/markdown-it-footnote@4.0.0": {
+        "integrity": "sha512-d3HsUnlE9Tb30lb8bVEbPVwxg/s52Y5YhtF60m+p54w2+N7HNsS7t26jtPCR8W/rbhFJraWdlu2C90by3LZKkw==",
+        "dependencies": {}
+      },
+      "@egihasdi/markdown-it-footnote@4.0.1": {
+        "integrity": "sha512-zgUDLD1QL+Et8arUOpZOBuDOLcJfUHnpR7GDZsgyXqNtkAToRFf6OdghtlnpyVmkcTIScQnnmDItjaLuvwfTVg==",
+        "dependencies": {}
       },
       "@isaacs/cliui@8.0.2": {
         "integrity": "sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==",
@@ -571,6 +582,10 @@
       },
       "highlight.js@11.9.0": {
         "integrity": "sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==",
+        "dependencies": {}
+      },
+      "home@2.0.0": {
+        "integrity": "sha512-6wvQwTg0mSdr6bavsZxrbugtG+Srbhd4ZWaM2rP32opT0KEIuHbXN7RKdJ/i9UEJMwVNgZViUTkBF98pfMzEsA==",
         "dependencies": {}
       },
       "is-binary-path@2.1.0": {
