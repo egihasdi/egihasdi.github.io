@@ -149,6 +149,6 @@ export function ObsidianLink(md, options = {}) {
     const token = tokens[idx]
     const href = md.utils.escapeHtml(token.href)
     const text = md.utils.escapeHtml(token.text)
-    return `<a href="${href}">${text}</a>`
+    return `<a href="${href}" class="obsidian-link">${text}</a>`
   }
 };
