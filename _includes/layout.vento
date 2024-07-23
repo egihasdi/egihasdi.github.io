@@ -34,6 +34,21 @@
       </div>
 
       <div class="mx-auto my-10 prose prose-invert ">
+        {{ if isPost }}
+        <div class="flex flex-row items-center post-details text-xs text-overlay0 text-right px-1 my-4">
+          <p>
+            <time datetime="{{ date |> date('DATETIME') }}">
+              {{ date |> date('HUMAN_DATE') }}
+            </time>
+          </p>
+          <p>
+            {{ readingInfo.minutes }} min read
+          </p>
+          <p>
+            {{ readingInfo.words }} words
+          </p>
+        </div>
+        {{ /if }}
         {{ content }}
       </div>
 

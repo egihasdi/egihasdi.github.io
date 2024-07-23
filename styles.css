@@ -37,3 +37,27 @@ a.external-link::after {
   background-size: contain;
   display: inline-block;
 }
+
+.post-details {
+  flex-flow: row wrap;
+  row-gap: 1em;
+  column-gap: 0.5em;
+
+  & p {
+    margin: 0;
+  }
+
+  & p:nth-child(-n + 2)::after {
+    content: "•";
+    padding-left: 0.5em;
+    align-self: stretch;
+  }
+
+  & p:last-of-type {
+    margin-right: 0.5em;
+  }
+
+  & a {
+    color: inherit;
+  }
+}
