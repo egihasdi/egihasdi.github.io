@@ -27,7 +27,7 @@
             </a>
           </div>
           <div class="flex flex-row gap-6">
-            <a href="/notes/0000000000-HOME" class="text-flamingo hover:text-pink">Notes</a>
+            <a href="/home" class="text-flamingo hover:text-pink">Notes</a>
             <!-- <a href="/" class="text-maroon hover:text-flamamingo">About</a> -->
           </div>
         </div>
