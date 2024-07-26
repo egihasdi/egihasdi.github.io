@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div class="mx-auto my-10 prose prose-invert ">
+      <div class="mx-auto my-10 prose prose-invert">
         {{ if isPost }}
         <div>
           <button onClick="window.history.back()" class="back-button text-overlay1 flex flex-row no-underline items-center text-xs">

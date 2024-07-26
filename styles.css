@@ -61,3 +61,13 @@ a.external-link::after {
     color: inherit;
   }
 }
+
+.footnotes {
+  & p {
+    font-size: 0.8em;
+  }
+
+  .footnote-backref {
+    text-decoration: none;
+  }
+}

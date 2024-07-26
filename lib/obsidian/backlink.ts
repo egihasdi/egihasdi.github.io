@@ -8,20 +8,31 @@ function markdownItBacklinks(md, options = {}) {
     const backlinkList = backlinks[fileId];
 
     if (backlinkList && backlinkList.length > 0) {
-      const sectionOpen = new state.Token("paragraph_open", "h4", 1);
+      const divOpen = new state.Token('html_block', '', 0);
+      divOpen.content = `
+          <hr class="backlinks-sep" />
+          <div class="backlinks">
+      `;
+      const divClose = new state.Token('html_block', '', 0);
+      divClose.content = '</div>';
+
+      const sectionOpen = new state.Token("paragraph_open", "p", 1);
       const sectionTitle = new state.Token("inline", "", 0);
 
       const text = new state.Token("text", "", 0);
-      text.content = "Backlinks:";
+      text.content = "LINKS TO THIS NOTE:";
 
       sectionTitle.content = "Backlinks:";
       sectionTitle.children = [];
-      const sectionTitleClose = new state.Token("paragraph_close", "h4", -1);
+
+      const sectionTitleClose = new state.Token("paragraph_close", "p", -1);
 
       const listOpen = new state.Token("bullet_list_open", "ul", 1);
+      listOpen.attrs = [["class", "backlinks-list"]]
       const listClose = new state.Token("bullet_list_close", "ul", -1);
 
       state.tokens.push(
+        divOpen,
         sectionOpen,
         sectionTitle,
         text,
@@ -44,7 +55,7 @@ function markdownItBacklinks(md, options = {}) {
         state.tokens.push(listItemOpen, listItemContent, listItemClose);
       });
 
-      state.tokens.push(listClose);
+      state.tokens.push(listClose, divClose);
     }
   }
 
