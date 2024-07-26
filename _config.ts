@@ -17,6 +17,8 @@ import minifyHTML from "lume/plugins/minify_html.ts";
 import date from "lume/plugins/date.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
 import { collectBacklinksFromFiles } from "./lib/obsidian/collectBacklinksFromFiles.ts";
+import { format } from "npm:date-fns"
+
 
 const backlinks = await collectBacklinksFromFiles("./notes");
 
@@ -43,6 +45,13 @@ site.hooks.addMarkdownItPlugin(footnote);
 site.hooks.addMarkdownItPlugin(externalLinks, {
   internalDomains: ["egihasdi.github.io"],
   externalTarget: "_blank",
+});
+
+site.filter("dateFromId", (value) => {
+  const [time] = value.split('-')
+  const d = new Date(Number(time) * 1000)
+
+  return format(d, 'PPP')
 });
 
 site.use(slugifyUrls());

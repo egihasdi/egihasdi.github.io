@@ -45,7 +45,7 @@
         <div class="flex flex-row items-center post-details text-xs text-overlay0 text-right px-1 my-4">
           <p>
             <time datetime="{{ date |> date('DATETIME') }}">
-              {{ date |> date('HUMAN_DATE') }}
+              {{ id |> dateFromId }}
             </time>
           </p>
           <p>

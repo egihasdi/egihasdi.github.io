@@ -47,6 +47,7 @@
       "npm:@mdit/plugin-figure": "npm:@mdit/plugin-figure@0.12.0_markdown-it@14.1.0",
       "npm:@tailwindcss/typography": "npm:@tailwindcss/typography@0.5.13_tailwindcss@3.4.4__postcss@8.4.39",
       "npm:autoprefixer@10.4.19": "npm:autoprefixer@10.4.19_postcss@8.4.39",
+      "npm:date-fns": "npm:date-fns@3.6.0",
       "npm:date-fns@3.6.0": "npm:date-fns@3.6.0",
       "npm:estree-walker@3.0.3": "npm:estree-walker@3.0.3",
       "npm:extend": "npm:extend@3.0.2",
