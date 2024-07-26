@@ -11,12 +11,15 @@ function markdownItCollectBacklinks(md, options = {}) {
 
   // Collect backlinks from each note
   function collectBacklinks(state) {
-    const env = state.env;
     const result = extract(state.src);
     const alias = result.attrs.aliases[0];
     const id = result.attrs.id;
     const slug = `${slugify(alias)}`;
     const data = { alias, slug, id }
+
+    if (result.attrs.isPost === false) {
+      return
+    }
 
     state.tokens.forEach((blockToken) => {
       if (blockToken.type === "inline" && blockToken.children) {
