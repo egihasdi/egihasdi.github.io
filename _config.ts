@@ -7,38 +7,46 @@ import codeHighlight from "lume/plugins/code_highlight.ts";
 import lang_js from "npm:highlight.js/lib/languages/javascript";
 import { full as emoji } from "npm:markdown-it-emoji";
 import { ObsidianLink } from "./lib/obsidian/index.ts";
+import mdItBacklinks from "./lib/obsidian/backlink.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import footnote from "npm:@egihasdi/markdown-it-footnote@4.0.1";
-import externalLinks from 'npm:markdown-it-external-links';
+import externalLinks from "npm:markdown-it-external-links";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
 import date from "lume/plugins/date.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
+import { collectBacklinksFromFiles } from "./lib/obsidian/collectBacklinksFromFiles.ts";
 
-const site = lume({}, {
-  markdown: {
-    options: {
-      linkify: true,
-    }
-  }
-});
+const backlinks = await collectBacklinksFromFiles("./notes");
+
+const site = lume(
+  {},
+  {
+    markdown: {
+      options: {
+        linkify: true,
+      },
+    },
+  },
+);
 
 site.hooks.addMarkdownItPlugin(emoji);
+
+site.hooks.addMarkdownItPlugin(mdItBacklinks, { backlinks });
 site.hooks.addMarkdownItPlugin(ObsidianLink, {
   baseUrl: "/notes/",
 });
+
+
 site.hooks.addMarkdownItPlugin(footnote);
 site.hooks.addMarkdownItPlugin(externalLinks, {
-  internalDomains: [
-    "egihasdi.github.io"
-  ],
-  externalTarget: '_blank'
+  internalDomains: ["egihasdi.github.io"],
+  externalTarget: "_blank",
 });
 
 site.use(slugifyUrls());
 site.use(minifyHTML());
-
 
 site.use(
   tailwindcss({

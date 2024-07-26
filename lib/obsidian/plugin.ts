@@ -1,70 +1,72 @@
 import { titleToUrl } from "./titleToUrl.ts"
 
+export function tokenize(state, silent) {
+  const start = state.pos
+  const marker = state.src.charCodeAt(start)
+
+  if (silent) { return false }
+
+  if (marker !== 0x3D/* = */ && marker !== 0x5B/* [ */) { return false }
+
+  // Handle == for mark
+  if (marker === 0x3D) {
+    const scanned = state.scanDelims(state.pos, true)
+    let len = scanned.length
+    const ch = String.fromCharCode(marker)
+
+    if (len < 2) { return false }
+
+    if (len % 2) {
+      const token = state.push('text', '', 0)
+      token.content = ch
+      len--
+    }
+
+    for (let i = 0; i < len; i += 2) {
+      const token = state.push('text', '', 0)
+      token.content = ch + ch
+
+      if (!scanned.can_open && !scanned.can_close) { continue }
+
+      state.delimiters.push({
+        marker,
+        length: 0,     // disable "rule of 3" length checks meant for emphasis
+        jump: i / 2, // 1 delimiter = 2 characters
+        token: state.tokens.length - 1,
+        end: -1,
+        open: scanned.can_open,
+        close: scanned.can_close
+      })
+    }
+
+    state.pos += scanned.length
+    return true
+  }
+
+  // Handle [[ for wikilink
+  if (marker === 0x5B && state.src.charCodeAt(start + 1) === 0x5B) {
+    const end = state.src.indexOf(']]', start)
+
+    if (end === -1) { return false }
+
+    const content = state.src.slice(start + 2, end)
+    const [href, text] = content.split('|')
+    const token = state.push('wikilink', '', 0)
+    token.content = content
+    token.href = titleToUrl(href, 'notes')
+    token.text = text || href
+
+    state.pos = end + 2
+    return true
+  }
+
+  return false
+}
+
 export function ObsidianLink(md, options = {}) {
   // Insert each marker as a separate text token, and add it to delimiter list
   //
-  function tokenize(state, silent) {
-    const start = state.pos
-    const marker = state.src.charCodeAt(start)
 
-    if (silent) { return false }
-
-    if (marker !== 0x3D/* = */ && marker !== 0x5B/* [ */) { return false }
-
-    // Handle == for mark
-    if (marker === 0x3D) {
-      const scanned = state.scanDelims(state.pos, true)
-      let len = scanned.length
-      const ch = String.fromCharCode(marker)
-
-      if (len < 2) { return false }
-
-      if (len % 2) {
-        const token = state.push('text', '', 0)
-        token.content = ch
-        len--
-      }
-
-      for (let i = 0; i < len; i += 2) {
-        const token = state.push('text', '', 0)
-        token.content = ch + ch
-
-        if (!scanned.can_open && !scanned.can_close) { continue }
-
-        state.delimiters.push({
-          marker,
-          length: 0,     // disable "rule of 3" length checks meant for emphasis
-          jump: i / 2, // 1 delimiter = 2 characters
-          token: state.tokens.length - 1,
-          end: -1,
-          open: scanned.can_open,
-          close: scanned.can_close
-        })
-      }
-
-      state.pos += scanned.length
-      return true
-    }
-
-    // Handle [[ for wikilink
-    if (marker === 0x5B && state.src.charCodeAt(start + 1) === 0x5B) {
-      const end = state.src.indexOf(']]', start)
-
-      if (end === -1) { return false }
-
-      const content = state.src.slice(start + 2, end)
-      const [href, text] = content.split('|')
-      const token = state.push('wikilink', '', 0)
-      token.content = content
-      token.href = titleToUrl(href, 'notes')
-      token.text = text || href
-
-      state.pos = end + 2
-      return true
-    }
-
-    return false
-  }
 
   // Walk through delimiter list and replace text tokens with tags
   //
