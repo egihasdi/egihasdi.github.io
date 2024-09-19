@@ -53,7 +53,7 @@ export function tokenize(state, silent) {
     const [href, text] = content.split('|')
     const token = state.push('wikilink', '', 0)
     token.content = content
-    token.href = titleToUrl(href, 'notes')
+    token.href = titleToUrl(href, 'src/notes') // TODO: fix hardcoded path
     token.text = text || href
 
     state.pos = end + 2

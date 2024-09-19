@@ -35,13 +35,10 @@ const site = lume(
   },
 );
 
-site.ignore('.direnv', '.devenv');
-
 site.hooks.addMarkdownItPlugin(emoji);
-
 site.hooks.addMarkdownItPlugin(mdItBacklinks, { backlinks });
 site.hooks.addMarkdownItPlugin(ObsidianLink, {
-  baseUrl: "/notes/",
+  baseUrl: "src/notes/",
 });
 
 
@@ -76,12 +73,12 @@ site.use(
 );
 
 site.remoteFile(
-  "/css/code_theme.css",
+  "css/code_theme.css",
   "https://cdn.jsdelivr.net/npm/@catppuccin/highlightjs@0.2.2/css/catppuccin-mocha.css",
 );
 
-site.copy("/css/code_theme.css"); // Cop
-site.copy("/notes/assets/imgs", "assets/imgs");
+site.copy("css/code_theme.css"); // Cop
+site.copy("notes/assets/imgs", "assets/imgs");
 
 site.use(
   modifyUrls({
