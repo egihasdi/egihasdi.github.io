@@ -6,8 +6,8 @@ import typography from "npm:@tailwindcss/typography";
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import lang_js from "npm:highlight.js/lib/languages/javascript";
 import { full as emoji } from "npm:markdown-it-emoji";
-import { ObsidianLink } from "./lib/obsidian/index.ts";
-import mdItBacklinks from "./lib/obsidian/backlink.ts";
+import { ObsidianLink } from "./src/lib/obsidian/index.ts";
+import mdItBacklinks from "./src/lib/obsidian/backlink.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import footnote from "npm:@egihasdi/markdown-it-footnote@4.0.1";
@@ -16,14 +16,16 @@ import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
 import date from "lume/plugins/date.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
-import { collectBacklinksFromFiles } from "./lib/obsidian/collectBacklinksFromFiles.ts";
+import { collectBacklinksFromFiles } from "./src/lib/obsidian/collectBacklinksFromFiles.ts";
 import { format } from "npm:date-fns"
 
 
-const backlinks = await collectBacklinksFromFiles("./notes");
+const backlinks = await collectBacklinksFromFiles("./src/notes");
 
 const site = lume(
-  {},
+  {
+    src: './src'
+  },
   {
     markdown: {
       options: {
@@ -32,6 +34,8 @@ const site = lume(
     },
   },
 );
+
+site.ignore('.direnv', '.devenv');
 
 site.hooks.addMarkdownItPlugin(emoji);
 

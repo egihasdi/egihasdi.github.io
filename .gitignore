@@ -1,3 +1,5 @@
 _site
 _cache
 notes/.obsidian
+.devenv
+.direnv
