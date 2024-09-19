@@ -4,6 +4,10 @@
     ./bufferline.nix
     ./obsidian.nix
     ./treesitter.nix
+    ./cmp.nix
+    ./nvim-autopairs.nix
+    ./fzf-lua.nix
+    ./zen-mode.nix
   ];
 
   opts = {

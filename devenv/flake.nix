@@ -52,7 +52,7 @@
                 let
                   nixvimModule = {
                     pkgs = pkgs-unstable;
-                    module = import ./config;
+                    module = import ./nixvim;
                     extraSpecialArgs =
                       {
                         root = config.devenv.root;
@@ -64,6 +64,7 @@
                   # https://devenv.sh/reference/options/
                   packages = [
                     nvim
+                    pkgs.ripgrep
                   ];
                   
                   languages.deno.enable = true;

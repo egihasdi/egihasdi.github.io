@@ -9,6 +9,7 @@
           path = "${root}/src/notes";
         }
       ];
+      picker.name = "fzf-lua";
     };
   };
 }
