@@ -13,27 +13,29 @@
         background: transparent;
       }
     </style>
-  <title>My first page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
 </head>
-<body class="dark bg-base">
+<body class="bg-bgH">
     <div class="container mx-auto p-4">
-      <div class="mb-8 bg-gradient-to-r from-base via-mantle to-base py-2 rounded-sm">
+      <div class="mb-8 bg-bgS px-4 py-6 rounded-sm mx-auto max-w-prose">
         <div class="flex flex-row justify-between">
           <div>
             <a href="/" >
-              <h1 class="text-rosewater font-medium text-md">
-                🗒️ EgiHasdi's  Notes
+              <h1 class="text-rosewater font-bold text-md underline">
+                Egi Hasdi
               </h1>
             </a>
           </div>
-          <div class="flex flex-row gap-6">
+          <div class="flex flex-row gap-6 text-fg">
             <a href="/home" class="text-flamingo hover:text-pink">Notes</a>
             <a href="/search" class="text-maroon hover:text-flamamingo">Search</a>
           </div>
         </div>
       </div>
 
-      <div class="mx-auto my-10 prose prose-invert">
+      <div class="mx-auto my-10 prose">
         {{ if isPost }}
         <div>
           <button onClick="window.history.back()" class="back-button text-overlay1 flex flex-row no-underline items-center text-xs">

@@ -24,6 +24,11 @@ body.dark {
   --pagefind-ui-tag: #152028;
 }
 
+body {
+  font-family: "Playwrite DE Grund", cursive;
+  font-optical-sizing: auto;
+}
+
 a.external-link::after {
   content: "";
   width: 13px;
