@@ -64,6 +64,7 @@
                   # https://devenv.sh/reference/options/
                   packages = [
                     nvim
+                    pkgs.xclip
                     pkgs.ripgrep
                   ];
                   
