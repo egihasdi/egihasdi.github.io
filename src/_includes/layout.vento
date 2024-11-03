@@ -15,16 +15,17 @@
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+
 </head>
 <body class="bg-bgH">
     <div class="container mx-auto p-4">
-      <div class="mb-8 bg-bgS px-4 py-6 rounded-sm mx-auto max-w-prose">
+      <div class="mb-8 bg-bgS px-4 py-6 rounded-sm mx-auto text-lg max-w-prose">
         <div class="flex flex-row justify-between">
           <div>
             <a href="/" >
               <h1 class="text-rosewater font-bold text-md underline">
-                Egi Hasdi
+                Home
               </h1>
             </a>
           </div>
@@ -35,7 +36,7 @@
         </div>
       </div>
 
-      <div class="mx-auto my-10 prose">
+      <div class="mx-auto my-10 prose prose-lg">
         {{ if isPost }}
         <div>
           <button onClick="window.history.back()" class="back-button text-overlay1 flex flex-row no-underline items-center text-xs">
