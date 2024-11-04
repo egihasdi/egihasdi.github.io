@@ -3,7 +3,7 @@ layout: layout.vento
 title: Egi Hasdi's Public Notes
 ---
 
-# Egi Hasdi Public Notes
+# About Me
 
 Hi!, I'm Egi Hasdi, a Software Engineer based in Indonesia. I currently work at [GovTech Edu Indonesia](https://www.govtechedu.id/) as a web Frontend Developer, where I focus on delivering high-scale web application for integrated system in higher education.
 
