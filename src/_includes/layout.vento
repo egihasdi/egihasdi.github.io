@@ -18,10 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
 
 </head>
-<body class="bg-bgH h-full">
+<body class="h-full">
     <div class="min-h-full flex flex-col p-4 gap-6">
       <header class="grow-0">
-        <div class="bg-bgS px-4 py-6 rounded-sm mx-auto text-lg max-w-prose">
+        <div class="bg-bgH px-4 py-6 rounded-sm mx-auto text-lg max-w-prose">
           <div class="flex flex-row justify-between">
             <div>
               <a href="/" >
