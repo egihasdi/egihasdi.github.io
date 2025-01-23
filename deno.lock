@@ -37,13 +37,17 @@
       "npm:autoprefixer@10.4.20": "npm:autoprefixer@10.4.20_postcss@8.4.41",
       "npm:date-fns": "npm:date-fns@4.1.0",
       "npm:date-fns@3.6.0": "npm:date-fns@3.6.0",
+      "npm:emojione": "npm:emojione@3.1.7",
       "npm:estree-walker@3.0.3": "npm:estree-walker@3.0.3",
+      "npm:font-awesome-icon-chars": "npm:font-awesome-icon-chars@1.3.0",
       "npm:highlight.js": "npm:highlight.js@11.11.1",
       "npm:highlight.js@11.10.0": "npm:highlight.js@11.10.0",
       "npm:markdown-it-attrs@4.2.0": "npm:markdown-it-attrs@4.2.0_markdown-it@14.1.0",
       "npm:markdown-it-deflist@3.0.0": "npm:markdown-it-deflist@3.0.0",
       "npm:markdown-it-emoji": "npm:markdown-it-emoji@3.0.0",
       "npm:markdown-it-external-links": "npm:markdown-it-external-links@0.0.6",
+      "npm:markdown-it-icon": "npm:markdown-it-icon@0.0.2",
+      "npm:markdown-it-icons": "npm:markdown-it-icons@0.4.1",
       "npm:markdown-it@14.1.0": "npm:markdown-it@14.1.0",
       "npm:meriyah@4.5.0": "npm:meriyah@4.5.0",
       "npm:pagefind@1.1.0": "npm:pagefind@1.1.0",
@@ -405,6 +409,10 @@
         "integrity": "sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==",
         "dependencies": {}
       },
+      "emojione@3.1.7": {
+        "integrity": "sha512-ITb0rrx6iuJKBnThRUE0uiGkwriwnY+919vxsAF+EqBHXhyjCTAcUo/nPNWodHaOJvKGdI1mel2o6TyyxBjjLw==",
+        "dependencies": {}
+      },
       "entities@4.5.0": {
         "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==",
         "dependencies": {}
@@ -440,6 +448,10 @@
         "dependencies": {
           "to-regex-range": "to-regex-range@5.0.1"
         }
+      },
+      "font-awesome-icon-chars@1.3.0": {
+        "integrity": "sha512-8Jyv4DApOm6OK6hMVgDeymDEBmztLoXU9iUiIadKsS/FfgeRqFQW8PUwG5pLVoz8yNPaRn7JgWralUV6Fms9nA==",
+        "dependencies": {}
       },
       "foreground-child@3.3.0": {
         "integrity": "sha512-Ld2g8rrAyMYFXBhEqMz8ZAHBi4J4uS1i/CxGMDnjyFWddMXLVcDp051DZfu+t7+ab7Wv6SMqpWmyFIj5UbfFvg==",
@@ -596,6 +608,22 @@
       },
       "markdown-it-external-links@0.0.6": {
         "integrity": "sha512-b0fsXGsf0higb7DEthr8ZKYErRB4ftIw1iklUZz0iN3leZxIZMEiFspfFdKrzpfblleZMnitz6ETTDgphjCSuA==",
+        "dependencies": {}
+      },
+      "markdown-it-icon@0.0.2": {
+        "integrity": "sha512-mYcQ2i8ahc/ZfWMmCn0hYC1uCnPP549xY62rd2jVA/qP8bjIavUO5LF58zPGDXvAmOmf+UpL/FGTajSyV4wzTQ==",
+        "dependencies": {}
+      },
+      "markdown-it-icons@0.4.1": {
+        "integrity": "sha512-FFo5pkIq5Ovdq53lJ+lzhVz9wl+JjNv5wDaQM2DPGWmmi4ygfYQjD1zgHdiTUWGxTLEioDlIyPwh8LMeQ74+zg==",
+        "dependencies": {
+          "emojione": "emojione@3.1.7",
+          "font-awesome-icon-chars": "font-awesome-icon-chars@1.3.0",
+          "markdown-it-regex": "markdown-it-regex@0.1.4"
+        }
+      },
+      "markdown-it-regex@0.1.4": {
+        "integrity": "sha512-EjsH5pYfKJRZ7t3fD1nD/KIk06hWT9ZoycOOc8n04BPgml6HleP/F9gSLWeQaUsPvSk5Yz2fr4iCY0bLp051bA==",
         "dependencies": {}
       },
       "markdown-it@14.1.0": {

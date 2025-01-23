@@ -15,31 +15,30 @@
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css">
 
 </head>
 <body class="h-full">
-    <div class="min-h-full flex flex-col p-4 gap-6">
+    <div class="min-h-full flex flex-col gap-6 px-4">
       <header class="grow-0">
-        <div class="bg-bgH px-4 py-6 rounded-sm mx-auto text-lg max-w-prose">
+        <nav class="bg-bgH px-4 py-4 rounded-sm mx-auto text-md max-w-prose">
           <div class="flex flex-row justify-between">
             <div>
               <a href="/" >
-                <h1 class="text-rosewater font-bold text-md underline">
-                  Home
-                </h1>
+                <strong>EGIHASDI</strong>.GITHUB.IO
               </a>
             </div>
-            <div class="flex flex-row gap-6 text-fg">
-              <a href="/home" class="text-flamingo hover:text-pink">Notes</a>
-              <a href="/search" class="text-maroon hover:text-flamamingo">Search</a>
+            <div class="flex flex-row gap-4 text-fg">
+              <a href="/home" class="text-flamingo underline hover:text-pink">Notes</a>
+              <a href="/search" class="text-maroon underline hover:text-flamamingo">Search</a>
             </div>
           </div>
-        </div>
+        </nav>
       </header>
       <main class="grow">
         <div class="container mx-auto">
-          <div class="mx-auto prose prose-lg">
+          <div class="mx-auto prose ">
             {{ if isPost }}
             <div>
               <button onClick="window.history.back()" class="back-button text-overlay1 flex flex-row no-underline items-center text-xs">
@@ -66,13 +65,13 @@
           </div>
         </div>
       </main>
-      <footer class="border-t py-4 border-slate-100 rounded-sm mx-auto text-lg max-w-prose grow-0 w-full ">
+      <footer class="border-t py-4 border-slate-100 rounded-sm mx-auto text-md max-w-prose grow-0 w-full ">
         <div class="flex flex-row justify-between">
           <div class="text-xs">
            Powered by <a href="https://lume.land" target="__blank">Lume</a>
           </div>
           <div class="flex flex-row gap-6 text-fg text-xs">
-            © 2024. Egi Hasdi.
+            © 2024-2025. Egi Hasdi.
           </div>
         </div>
       </footer>

@@ -16,14 +16,13 @@ import minifyHTML from "lume/plugins/minify_html.ts";
 import date from "lume/plugins/date.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
 import { collectBacklinksFromFiles } from "./src/lib/obsidian/collectBacklinksFromFiles.ts";
-import { format } from "npm:date-fns"
-
+import { format } from "npm:date-fns";
 
 const backlinks = await collectBacklinksFromFiles("./src/notes");
 
 const site = lume(
   {
-    src: './src'
+    src: "./src",
   },
   {
     markdown: {
@@ -40,7 +39,6 @@ site.hooks.addMarkdownItPlugin(ObsidianLink, {
   baseUrl: "src/notes/",
 });
 
-
 site.hooks.addMarkdownItPlugin(footnote);
 site.hooks.addMarkdownItPlugin(externalLinks, {
   internalDomains: ["egihasdi.github.io"],
@@ -48,10 +46,10 @@ site.hooks.addMarkdownItPlugin(externalLinks, {
 });
 
 site.filter("dateFromId", (value) => {
-  const [time] = value.split('-')
-  const d = new Date(Number(time) * 1000)
+  const [time] = value.split("-");
+  const d = new Date(Number(time) * 1000);
 
-  return format(d, 'PPP')
+  return format(d, "PPP");
 });
 
 site.use(slugifyUrls());
@@ -93,13 +91,10 @@ site.use(
           orange: "#d65d0e",
           orange2: "#af3a03",
           gray: "#7c6f64",
-          gray2: "#928374" 
-        }
+          gray2: "#928374",
+        },
       },
-      plugins: [
-
-        typography,
-      ]
+      plugins: [typography],
     },
   }),
 );
