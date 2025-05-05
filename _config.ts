@@ -52,6 +52,12 @@ site.filter("dateFromId", (value) => {
   return format(d, "PPP");
 });
 
+site.filter("idFormat", (value) => {
+  const [, id] = value.split("-");
+
+  return id;
+});
+
 site.use(slugifyUrls());
 site.use(minifyHTML());
 

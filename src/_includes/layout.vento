@@ -7,7 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
       <text y=%22.9em%22 font-size=%2290%22>🗒️</text></svg>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
+    <title data-pagefind-meta="title">
       {{ if title }} 
         {{ title }} - egihasdi.github.io
       {{ else }}
@@ -36,7 +36,7 @@
               </a>
             </div>
             <div class="flex flex-row gap-4 text-fg">
-              <a href="/home" class="text-flamingo underline hover:text-pink">Notes</a>
+              <a href="/about" class="text-maroon underline hover:text-flamamingo">About</a>
               <a href="/search" class="text-maroon underline hover:text-flamamingo">Search</a>
             </div>
           </div>
@@ -53,21 +53,29 @@
                 Go back
               </button>
             </div>
-            <div class="flex flex-row items-center post-details text-xs text-overlay0 text-right px-1 my-4">
-              <p>
-                <time datetime="{{ date |> date('DATETIME') }}">
-                  {{ id |> dateFromId }}
-                </time>
-              </p>
-              <p>
-                {{ readingInfo.minutes }} min read
-              </p>
-              <p>
-                {{ readingInfo.words }} words
+
+            <div class="flex flex-row justify-between">
+              <div class="flex flex-row items-center post-details text-xs text-overlay0 text-right px-1 my-4">
+                <p>
+                  <time datetime="{{ date |> date('DATETIME') }}">
+                    {{ id |> dateFromId }}
+                  </time>
+                </p>
+                <p>
+                  {{ readingInfo.minutes }} min read
+                </p>
+                <p>
+                  {{ readingInfo.words }} words
+                </p>
+              </div>
+              <p class="text-red-200">
+                &nbsp;&nbsp; #{{ id |> idFormat }}
               </p>
             </div>
             {{ /if }}
-            {{ content }}
+            <span data-pagefind-body>
+              {{ content }}
+            </span>
           </div>
         </div>
       </main>
