@@ -12,7 +12,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 import footnote from "npm:@egihasdi/markdown-it-footnote@4.0.1";
 import externalLinks from "npm:markdown-it-external-links";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
-import minifyHTML from "lume/plugins/minify_html.ts";
+// import minifyHTML from "lume/plugins/minify_html.ts";
 import date from "lume/plugins/date.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
 import { collectBacklinksFromFiles } from "./src/lib/obsidian/collectBacklinksFromFiles.ts";
@@ -59,7 +59,7 @@ site.filter("idFormat", (value) => {
 });
 
 site.use(slugifyUrls());
-site.use(minifyHTML());
+// site.use(minifyHTML());
 
 site.use(
   tailwindcss({
